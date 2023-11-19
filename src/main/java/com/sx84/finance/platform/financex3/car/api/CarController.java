@@ -1,6 +1,5 @@
 package com.sx84.finance.platform.financex3.car.api;
 
-import com.sx84.finance.platform.financex3.car.domain.model.Car;
 import com.sx84.finance.platform.financex3.car.domain.service.CarService;
 import com.sx84.finance.platform.financex3.car.mapping.CarMapper;
 import com.sx84.finance.platform.financex3.car.resource.CarResource;

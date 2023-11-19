@@ -3,10 +3,10 @@ package com.sx84.finance.platform.financex3.car.mapping;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration("learningMappingConfiguration")
+@Configuration("carMappingConfiguration")
 public class MappingConfiguration {
     @Bean
-    public CarMapper studentMapper() {
+    public CarMapper carMapper() {
         return new CarMapper();
     }
 }

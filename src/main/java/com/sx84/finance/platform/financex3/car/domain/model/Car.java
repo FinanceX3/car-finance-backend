@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Car")
+@Table(name = "cars")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +39,7 @@ public class Car {
     @Digits(integer = 9, fraction = 2)
     private BigDecimal price;
 
+    @Column(name = "image_url")
     @NotNull
     @NotBlank
     private String imageUrl;
