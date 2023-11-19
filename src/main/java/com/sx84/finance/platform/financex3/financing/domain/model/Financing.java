@@ -1,0 +1,47 @@
+package com.sx84.finance.platform.financex3.financing.domain.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "financings")
+public class Financing {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "loan")
+    @NotNull
+    @NotBlank
+    private float loan;
+
+    @Column(name = "initial_fee")
+    @NotNull
+    @NotBlank
+    private float initialFee;
+
+    @Column(name = "final_fee")
+    @NotNull
+    @NotBlank
+    private float finalFee;
+
+    @Column(name = "balance")
+    @NotNull
+    @NotBlank
+    private float balance;
+
+}
