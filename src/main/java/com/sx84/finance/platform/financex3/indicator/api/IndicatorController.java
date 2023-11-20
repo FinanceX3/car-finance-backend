@@ -47,7 +47,7 @@ public class IndicatorController {
     })
     @PostMapping
     public ResponseEntity<IndicatorResource> createStudent(@RequestBody CreateIndicatorResource resource) {
-        return new ResponseEntity<>(mapper.toResource(IndicatorService.create(mapper.toModel(resource))), HttpStatus.CREATED);
+        return new ResponseEntity<>(mapper.toResource(IndicatorService.create(resource)), HttpStatus.CREATED);
     }
 
 }

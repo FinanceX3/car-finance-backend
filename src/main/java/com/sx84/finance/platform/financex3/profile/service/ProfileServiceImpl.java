@@ -7,8 +7,8 @@ import com.sx84.finance.platform.financex3.profile.mapping.ProfileMapper;
 import com.sx84.finance.platform.financex3.profile.resource.CreateProfileResource;
 import com.sx84.finance.platform.financex3.shared.exception.ResourceNotFoundException;
 import com.sx84.finance.platform.financex3.shared.exception.ResourceValidationException;
-import com.sx84.finance.platform.financex3.user.domain.model.User;
-import com.sx84.finance.platform.financex3.user.domain.persistence.UserRepository;
+import com.sx84.finance.platform.financex3.user.domain.service.UserService;
+import com.sx84.finance.platform.financex3.user.resource.CreateUserResource;
 
 import jakarta.validation.ConstraintViolation;
 import org.springframework.data.domain.Page;
@@ -27,14 +27,14 @@ public class ProfileServiceImpl implements ProfileService {
 
     private final ProfileMapper mapper;
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     private final Validator validator;
 
-    public ProfileServiceImpl(ProfileRepository profileRepository, UserRepository userRepository, Validator validator, ProfileMapper mapper) {
+    public ProfileServiceImpl(ProfileRepository profileRepository, UserService userService, Validator validator, ProfileMapper mapper) {
         this.profileRepository = profileRepository;
         this.mapper = mapper;
-        this.userRepository = userRepository;
+        this.userService = userService;
         this.validator = validator;
     }
 
@@ -70,8 +70,8 @@ public class ProfileServiceImpl implements ProfileService {
         
         Profile newProfile = profileRepository.save(mapper.toModel(resource));
 
-        userRepository.save(new User(0L, resource.getEmail(), resource.getPassword(), newProfile));
-        
+        userService.create(new CreateUserResource(resource.getEmail(), resource.getPassword(), newProfile.getId()));
+
         return newProfile;
     }
 }

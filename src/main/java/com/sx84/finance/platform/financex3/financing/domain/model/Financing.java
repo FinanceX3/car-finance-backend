@@ -1,12 +1,13 @@
 package com.sx84.finance.platform.financex3.financing.domain.model;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,22 +27,18 @@ public class Financing {
 
     @Column(name = "loan")
     @NotNull
-    @NotBlank
     private float loan;
 
     @Column(name = "initial_fee")
     @NotNull
-    @NotBlank
-    private float initialFee;
+    private BigDecimal initialFee;
 
     @Column(name = "final_fee")
     @NotNull
-    @NotBlank
-    private float finalFee;
+    private BigDecimal finalFee;
 
     @Column(name = "balance")
     @NotNull
-    @NotBlank
-    private float balance;
+    private BigDecimal balance;
 
 }

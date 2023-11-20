@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
+
+import com.sx84.finance.platform.financex3.payment_plan.domain.model.PaymentPlan;
 
 @Getter
 @Setter
@@ -43,4 +46,7 @@ public class Car {
     @NotNull
     @NotBlank
     private String imageUrl;
+
+    @OneToMany(mappedBy = "car")
+    private List<PaymentPlan> paymentPlan;
 }

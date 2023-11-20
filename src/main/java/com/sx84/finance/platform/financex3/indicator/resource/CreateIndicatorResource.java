@@ -10,18 +10,14 @@ import lombok.*;
 @AllArgsConstructor
 public class CreateIndicatorResource {
     @NotNull
-    @NotBlank
     private float cok;
 
     @NotNull
-    @NotBlank
     private float tir;
 
     @NotNull
-    @NotBlank
     private float tcea;
 
     @NotNull
-    @NotBlank
     private float van;
 }

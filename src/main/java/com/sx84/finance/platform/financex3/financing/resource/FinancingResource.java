@@ -1,5 +1,7 @@
 package com.sx84.finance.platform.financex3.financing.resource;
 
+import java.math.BigDecimal;
+
 import lombok.*;
 
 @Getter
@@ -12,9 +14,9 @@ public class FinancingResource {
 
     private float loan;
 
-    private float initialFee;
+    private BigDecimal initialFee;
 
-    private float finalFee;
+    private BigDecimal finalFee;
 
-    private float balance;
+    private BigDecimal balance;
 }

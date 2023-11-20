@@ -12,6 +12,8 @@ import com.sx84.finance.platform.financex3.shared.exception.ResourceValidationEx
 import com.sx84.finance.platform.financex3.user.domain.model.User;
 import com.sx84.finance.platform.financex3.user.domain.persistence.UserRepository;
 import com.sx84.finance.platform.financex3.user.domain.service.UserService;
+import com.sx84.finance.platform.financex3.user.mapping.UserMapper;
+import com.sx84.finance.platform.financex3.user.resource.CreateUserResource;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
@@ -22,10 +24,13 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
+    private final UserMapper mapper;
+
     private final Validator validator;
 
-    public UserServiceImpl(UserRepository userRepository, Validator validator) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper mapper, Validator validator) {
         this.userRepository = userRepository;
+        this.mapper = mapper;
         this.validator = validator;
     }
 
@@ -33,6 +38,7 @@ public class UserServiceImpl implements UserService {
     public List<User> getAll() {
         return userRepository.findAll();
     }
+
 
     @Override
     public Page<User> getAll(Pageable pageable) {
@@ -46,19 +52,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User create(User user) {
-        Set<ConstraintViolation<User>> violations = validator.validate(user);
+    public User create(CreateUserResource resource) {
+        Set<ConstraintViolation<CreateUserResource>> violations = validator.validate(resource);
 
         if (!violations.isEmpty())
             throw new ResourceValidationException(ENTITY, violations);
 
         //validation of brand and model
 
-        User existingUser = userRepository.findByEmail(user.getEmail());
+        User existingUser = userRepository.findByEmail(resource.getEmail());
 
         if (existingUser != null)
             throw new ResourceValidationException(ENTITY, "A user with this email already exists");
 
-        return userRepository.save(user);
+        return userRepository.save(mapper.toModel(resource));
     }
 }

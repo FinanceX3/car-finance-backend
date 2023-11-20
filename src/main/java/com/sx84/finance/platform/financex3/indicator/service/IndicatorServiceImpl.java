@@ -3,6 +3,8 @@ package com.sx84.finance.platform.financex3.indicator.service;
 import com.sx84.finance.platform.financex3.indicator.domain.model.Indicator;
 import com.sx84.finance.platform.financex3.indicator.domain.persistence.IndicatorRepository;
 import com.sx84.finance.platform.financex3.indicator.domain.service.IndicatorService;
+import com.sx84.finance.platform.financex3.indicator.mapping.IndicatorMapper;
+import com.sx84.finance.platform.financex3.indicator.resource.CreateIndicatorResource;
 import com.sx84.finance.platform.financex3.shared.exception.ResourceNotFoundException;
 import com.sx84.finance.platform.financex3.shared.exception.ResourceValidationException;
 import jakarta.validation.ConstraintViolation;
@@ -20,10 +22,13 @@ public class IndicatorServiceImpl implements IndicatorService {
 
     private final IndicatorRepository indicatorRepository;
 
+    private final IndicatorMapper mapper;
+    
     private final Validator validator;
 
-    public IndicatorServiceImpl(IndicatorRepository indicatorRepository, Validator validator) {
+    public IndicatorServiceImpl(IndicatorRepository indicatorRepository, IndicatorMapper mapper, Validator validator) {
         this.indicatorRepository = indicatorRepository;
+        this.mapper = mapper;
         this.validator = validator;
     }
 
@@ -44,12 +49,12 @@ public class IndicatorServiceImpl implements IndicatorService {
     }
 
     @Override
-    public Indicator create(Indicator indicator) {
-        Set<ConstraintViolation<Indicator>> violations = validator.validate(indicator);
+    public Indicator create(CreateIndicatorResource resource) {
+        Set<ConstraintViolation<CreateIndicatorResource>> violations = validator.validate(resource);
 
         if (!violations.isEmpty())
             throw new ResourceValidationException(ENTITY, violations);
 
-        return indicatorRepository.save(indicator);
+        return indicatorRepository.save(mapper.toModel(resource));
     }
 }

@@ -1,5 +1,7 @@
 package com.sx84.finance.platform.financex3.financing.resource;
 
+import java.math.BigDecimal;
+
 import jakarta.validation.constraints.*;
 import lombok.*;
 
@@ -9,19 +11,15 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateFinancingResource {
-    @NotNull
-    @NotBlank
+    @NotNull   
     private float loan;
 
     @NotNull
-    @NotBlank
-    private float initial_fee;
+    private BigDecimal initialFee;
 
     @NotNull
-    @NotBlank
-    private float final_fee;
+    private BigDecimal finalFee;
 
     @NotNull
-    @NotBlank
-    private float balance;
+    private BigDecimal balance;
 }

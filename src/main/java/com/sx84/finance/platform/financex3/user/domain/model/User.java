@@ -1,6 +1,9 @@
 package com.sx84.finance.platform.financex3.user.domain.model;
 
 
+import java.util.List;
+
+import com.sx84.finance.platform.financex3.payment_plan.domain.model.PaymentPlan;
 import com.sx84.finance.platform.financex3.profile.domain.model.Profile;
 
 import jakarta.persistence.*;
@@ -30,4 +33,7 @@ public class User {
     @OneToOne
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private Profile profile;
+
+    @OneToMany(mappedBy = "user")
+    private List<PaymentPlan> paymentPlans;
 }

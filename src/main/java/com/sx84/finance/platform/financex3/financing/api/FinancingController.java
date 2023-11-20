@@ -47,7 +47,7 @@ public class FinancingController {
     })
     @PostMapping
     public ResponseEntity<FinancingResource> createStudent(@RequestBody CreateFinancingResource resource) {
-        return new ResponseEntity<>(mapper.toResource(financingService.create(mapper.toModel(resource))), HttpStatus.CREATED);
+        return new ResponseEntity<>(mapper.toResource(financingService.create(resource)), HttpStatus.CREATED);
     }
 
 }

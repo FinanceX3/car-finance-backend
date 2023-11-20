@@ -3,6 +3,8 @@ package com.sx84.finance.platform.financex3.financing.service;
 import com.sx84.finance.platform.financex3.financing.domain.model.Financing;
 import com.sx84.finance.platform.financex3.financing.domain.persistence.FinancingRepository;
 import com.sx84.finance.platform.financex3.financing.domain.service.FinancingService;
+import com.sx84.finance.platform.financex3.financing.mapping.FinancingMapper;
+import com.sx84.finance.platform.financex3.financing.resource.CreateFinancingResource;
 import com.sx84.finance.platform.financex3.shared.exception.ResourceNotFoundException;
 import com.sx84.finance.platform.financex3.shared.exception.ResourceValidationException;
 import jakarta.validation.ConstraintViolation;
@@ -19,11 +21,13 @@ public class FinancingServiceImpl implements FinancingService {
     private static final String ENTITY = "Financing";
 
     private final FinancingRepository financingRepository;
+    private final FinancingMapper mapper;
 
     private final Validator validator;
 
-    public FinancingServiceImpl(FinancingRepository financingRepository, Validator validator) {
+    public FinancingServiceImpl(FinancingRepository financingRepository, FinancingMapper mapper, Validator validator) {
         this.financingRepository = financingRepository;
+        this.mapper = mapper;
         this.validator = validator;
     }
 
@@ -44,12 +48,12 @@ public class FinancingServiceImpl implements FinancingService {
     }
 
     @Override
-    public Financing create(Financing financing) {
-        Set<ConstraintViolation<Financing>> violations = validator.validate(financing);
+    public Financing create(CreateFinancingResource resource) {
+        Set<ConstraintViolation<CreateFinancingResource>> violations = validator.validate(resource);
 
         if (!violations.isEmpty())
             throw new ResourceValidationException(ENTITY, violations);
 
-        return financingRepository.save(financing);
+        return financingRepository.save(mapper.toModel(resource));
     }
 }

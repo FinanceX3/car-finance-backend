@@ -18,6 +18,5 @@ public class CreateUserResource {
     private String password;
 
     @NotNull
-    @NotBlank
     private Long profileId;
 }
