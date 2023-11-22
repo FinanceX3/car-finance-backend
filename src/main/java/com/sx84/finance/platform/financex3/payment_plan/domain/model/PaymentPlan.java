@@ -61,15 +61,11 @@ public class PaymentPlan {
     private Integer graceTypePartial;
 
     @Column(name = "initial_fee")
-    @DecimalMin(value = "0.00", inclusive = true)
-    @DecimalMax(value = "999999999.99", inclusive = true)
     @NotNull
     private BigDecimal initialFee;
 
     @Column(name = "final_stallment")
     @NotNull
-    @DecimalMin(value = "0.00", inclusive = true)
-    @DecimalMax(value = "999999999.99", inclusive = true)
     private BigDecimal finalInstallment;
 
     @Column(name = "term")
@@ -77,7 +73,6 @@ public class PaymentPlan {
     private Integer term;
 
     @Column(name = "discount_rate")
-    @DecimalMin(value = "0.00", inclusive = true)
     @NotNull
     private BigDecimal discountRate;
 
@@ -96,7 +91,6 @@ public class PaymentPlan {
 
     @Column(name = "notarial_costs")
     @NotNull
-    @DecimalMin(value = "0.00", inclusive = true)
     private BigDecimal notarialCosts;
 
     @Column(name = "notarial_cost_type")
@@ -106,7 +100,6 @@ public class PaymentPlan {
 
     @Column(name = "registration_costs")
     @NotNull
-    @DecimalMin(value = "0.00", inclusive = true)
     private BigDecimal registrationCosts;
 
     @Column(name = "registration_cost_type")
@@ -116,7 +109,6 @@ public class PaymentPlan {
 
     @Column(name = "appraisal")
     @NotNull
-    @DecimalMin(value = "0.00", inclusive = true)
     private BigDecimal appraisal;
 
     @Column(name = "appraisal_type")
@@ -126,7 +118,6 @@ public class PaymentPlan {
 
     @Column(name = "study_commission")
     @NotNull
-    @DecimalMin(value = "0.00", inclusive = true)
     private BigDecimal studyCommission;
 
     @Column(name = "study_commission_type")
@@ -136,7 +127,6 @@ public class PaymentPlan {
 
     @Column(name = "activation_commission")
     @NotNull
-    @DecimalMin(value = "0.00", inclusive = true)
     private BigDecimal activationCommission;
 
     @Column(name = "activation_commission_type")
@@ -146,17 +136,14 @@ public class PaymentPlan {
 
     @Column(name = "gps")
     @NotNull
-    @DecimalMin(value = "0.00", inclusive = true)
     private BigDecimal gps;
 
     @Column(name = "portage")
     @NotNull
-    @DecimalMin(value = "0.00", inclusive = true)
     private BigDecimal portage;
 
     @Column(name = "administration_expenses")
     @NotNull
-    @DecimalMin(value = "0.00", inclusive = true)
     private BigDecimal administrationExpenses;
 
     @ManyToOne
