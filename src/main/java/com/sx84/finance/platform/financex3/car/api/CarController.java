@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/cars")
 @Tag(name = "Cars", description = "Create and read cars")
+@CrossOrigin(origins = {"*"})
 public class CarController {
     private final CarService carService;
     private final CarMapper mapper;
