@@ -18,7 +18,7 @@ import com.sx84.finance.platform.financex3.payment_plan.domain.model.PaymentPlan
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "cars")
+@Table(name = "car")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
