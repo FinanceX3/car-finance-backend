@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = {"*"})
 @RequestMapping("/api/v1/users")
 @Tag(name = "Users", description = "Create and read users")
 public class UserController {

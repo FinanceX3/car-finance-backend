@@ -17,6 +17,7 @@ import com.sx84.finance.platform.financex3.payment_plan.resource.CreatePaymentPl
 import com.sx84.finance.platform.financex3.payment_plan.resource.PaymentPlanResource;
 
 @RestController
+@CrossOrigin(origins = {"*"})
 @RequestMapping("/api/v1/plans")
 @Tag(name = "PaymentPlans", description = "Create and read paymentPlans")
 public class PaymentPlanController {

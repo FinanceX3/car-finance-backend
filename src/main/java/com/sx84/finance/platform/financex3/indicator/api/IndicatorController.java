@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = {"*"})
 @RequestMapping("/api/v1/Indicators")
 @Tag(name = "Indicators", description = "Create and read Indicators")
 public class IndicatorController {
