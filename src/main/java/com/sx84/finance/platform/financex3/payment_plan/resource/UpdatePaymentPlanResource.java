@@ -6,6 +6,8 @@ import lombok.*;
 import com.sx84.finance.platform.financex3.financing.domain.model.Financing;
 import com.sx84.finance.platform.financex3.indicator.domain.model.Indicator;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 public class UpdatePaymentPlanResource {
@@ -23,10 +25,77 @@ public class UpdatePaymentPlanResource {
     private String rateType;
 
     @NotNull
-    private String grace_type;
+    @NotBlank
+    private String graceTypeTotal;
 
     @NotNull
-    private Integer grace;
+    private Integer graceTypePartial;
+
+    @NotNull
+    private BigDecimal initialFee;
+
+    @NotNull
+    private BigDecimal finalInstallment;
+
+    @NotNull
+    private Integer term;
+
+    @NotNull
+    private BigDecimal discountRate;
+
+    @NotNull
+    @NotBlank
+    private String capitalizationPeriod;
+
+    @NotNull
+    private Integer paymentFrequency;
+
+    @NotNull
+    private Integer daysYear;
+
+    @NotNull
+    private BigDecimal notarialCosts;
+
+    @NotNull
+    @NotBlank
+    private String notarialCostType;
+
+    @NotNull
+    private BigDecimal registrationCosts;
+
+    @NotNull
+    @NotBlank
+    private String registrationCostType;
+
+    @NotNull
+    private BigDecimal appraisal;
+
+    @NotNull
+    @NotBlank
+    private String appraisalType;
+
+    @NotNull
+    private BigDecimal studyCommission;
+
+    @NotNull
+    @NotBlank
+    private String studyCommissionType;
+
+    @NotNull
+    private BigDecimal activationCommission;
+
+    @NotNull
+    @NotBlank
+    private String activationCommissionType;
+
+    @NotNull
+    private BigDecimal gps;
+
+    @NotNull
+    private BigDecimal portage;
+
+    @NotNull
+    private BigDecimal administrationExpenses;
 
     @NotNull
     private Indicator indicator;
