@@ -15,4 +15,5 @@ public interface UserService {
 
     User getById(Long userId);
     User create(CreateUserResource resource);
+    User getByEmailAndPassword(String email, String password);
 }

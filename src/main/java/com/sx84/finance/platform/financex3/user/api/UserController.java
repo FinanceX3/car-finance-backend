@@ -51,4 +51,9 @@ public class UserController {
         return new ResponseEntity<>(mapper.toResource(userService.create(resource)), HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Get user by email and password")
+    @GetMapping("/login")
+    public UserResource getUserByEmailAndPassword(@RequestParam String email, @RequestParam String password){
+        return mapper.toResource(userService.getByEmailAndPassword(email, password));
+    }
 }

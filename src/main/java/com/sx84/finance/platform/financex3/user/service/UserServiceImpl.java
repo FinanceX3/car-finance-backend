@@ -67,4 +67,8 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.save(mapper.toModel(resource));
     }
+    @Override
+    public User getByEmailAndPassword(String email, String password) {
+        return userRepository.findByEmailAndPassword(email, password);
+    }
 }
